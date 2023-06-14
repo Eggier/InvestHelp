@@ -1,0 +1,19 @@
+{% extends 'app/template.html' %}
+{% load static %}
+{% block head %}
+    <title>Статистика</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.b }}
+        <button type="submit">Рассчитать</button>
+    </form>
+    {% if show_graph %}
+        <img src="{% static 'app/graph.png' %}" style="text-align: center;">
+    {% endif %}
+    {% for company, invest in investments.items %}
+        <p style="margin-top: 0;">{{ company }}: {{ invest }}</p>
+    {% endfor %}
+{% endblock %}

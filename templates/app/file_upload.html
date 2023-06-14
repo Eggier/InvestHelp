@@ -1,0 +1,12 @@
+{% extends 'app/template.html' %}
+{% block head %}
+    <title>Загрузить таблицу</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.file }}
+        <button type="submit">Загрузить файл</button>
+    </form>
+{% endblock %}
